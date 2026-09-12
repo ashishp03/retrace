@@ -4,6 +4,24 @@ Everyone's documents are scattered across a camera roll and an inbox, and none o
 
 Built for the Open Model Hack (2 people, 10:30–16:30, judged live).
 
+## System design (simplified, for slides)
+
+The five-second version — one screen, wide enough to drop straight into a slide.
+
+```mermaid
+%%{init: {"look": "handDrawn", "theme": "base", "themeVariables": {"primaryColor": "#f3efe6", "primaryBorderColor": "#1b1a17", "primaryTextColor": "#1b1a17", "lineColor": "#1b1a17", "secondaryColor": "#f6d9dc", "tertiaryColor": "#ffffff", "fontSize": "20px"}}}%%
+flowchart LR
+    SRC["📸 Photos<br/>✉ Gmail"] --> GATES["Cheap gates<br/>filter obvious junk"]
+    GATES -.->|~95% discarded| DROP(("discarded"))
+    GATES --> EXTRACT["Extract<br/>local Gemma"]
+    EXTRACT --> XCHECK["Cross-check<br/>Lambda + Respan"]
+    XCHECK --> SEARCH["Search & Ask"]
+
+    style EXTRACT fill:#f9d5a7,stroke:#c77b1e
+    style XCHECK fill:#f6d9dc,stroke:#b3222f
+    style SEARCH fill:#c9e8d8,stroke:#1e8c5a
+```
+
 ## System design (as built)
 
 `ARCHITECTURE.md` is the original pre-build plan — stage 5 evolved once Lambda/Respan keys
