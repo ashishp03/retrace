@@ -8,7 +8,6 @@ __pycache__/
 staging/
 */staging/
 */photos/
-!tests/fixtures/**
 
 # Built artifacts
 *.duckdb
@@ -16,5 +15,6 @@ staging/
 *.sqlite3
 retrace.db
 
-# Test data and images
+# Test data and images — including the needle-test fixtures, which are generated,
+# not committed: run `uv run python tests/needles/generate_needles.py` to recreate them.
 *.png

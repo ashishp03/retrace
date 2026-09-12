@@ -19,10 +19,13 @@ Dependencies and the Python version are managed with [`uv`](https://docs.astral.
    cp .env.example .env
    ```
    `.env` holds Nango, Respan, and Lambda credentials plus local paths (photo folder, DB path, Ollama host/model). A `.claude/` hook blocks direct edits/commits of `.env` from inside Claude Code — edit it by hand.
-4. Run any project script with `uv run`, e.g.:
+4. Generate the fifteen synthetic needle-test documents — these are **not** committed (generated,
+   not source), so this step is required after every fresh clone:
    ```bash
-   uv run python tests/needles/generate_needles.py   # regenerate the 15 synthetic test docs
+   uv run python tests/needles/generate_needles.py
    ```
+   Re-run any time to regenerate deterministically; see `tests/needles/manifest.json` for the
+   expected outcome of each one and `.claude/skills/needle-test` for the check that uses them.
 5. External runtime dependencies (not managed by `uv`): [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) (`brew install tesseract`) for stage 3, and [Ollama](https://ollama.com) for the local stage-4 vision model.
 
 Adding a dependency later: `uv add <package>` (or `uv add --group dev <package>` for dev-only tools) — this updates both `pyproject.toml` and `uv.lock` together, so always commit both.
