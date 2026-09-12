@@ -4,6 +4,96 @@ Everyone's documents are scattered across a camera roll and an inbox, and none o
 
 Built for the Open Model Hack (2 people, 10:30–16:30, judged live).
 
+## System design (as built)
+
+`ARCHITECTURE.md` is the original pre-build plan — stage 5 evolved once Lambda/Respan keys
+actually arrived (see `CHECKPOINT2.md` for the full story). This is what's actually running.
+
+```
+  Local photo folder ────┐
+                          ├──▶  staging dir (tagged photos | gmail)
+  Gmail, via Nango ───────┘            │
+                                        ▼
+                        ┌───────────────────────────────┐
+                        │ Stage 2 — Metadata gate        │
+                        │ filename / EXIF / aspect ratio  │
+                        │ no model · ~2.5 ms/image        │
+                        └───────────────────────────────┘
+                              │ survives        │ demoted
+                              ▼                 ▼
+                 ┌───────────────────────┐   [ dropped ]
+                 │ Stage 3 — OCR gate     │
+                 │ tesseract · ~108ms/img │
+                 └───────────────────────┘
+                     │ survives      │ dropped
+                     ▼               ▼
+       ┌─────────────────────────┐  [ dropped, ocr_text kept ]
+       │ Stage 4 — Extract        │
+       │ gemma4:e4b, local Ollama │
+       │ image + OCR hint → JSON  │
+       └─────────────────────────┘
+                     │
+                     ▼
+  ┌──────────────────────────────────────────────────────────────┐
+  │ Stage 5 — Cross-check                                         │
+  │                                                                │
+  │  Verifier: gemma3:27b on a Lambda GPU instance (A100 40GB),    │
+  │  reached over an SSH tunnel — re-reads the image blind to      │
+  │  stage 4's answer.                                             │
+  │            │                                                   │
+  │            ▼                                                   │
+  │  Fields agree with stage 4? ──yes (usually)──▶ agreement: high │
+  │            │ no                                                │
+  │            ▼                                                   │
+  │  Arbiter (conditional only): claude-haiku-4-5 via Respan,      │
+  │  text-only — reasons over both extractions + OCR text, no      │
+  │  image. Decides a resolution, or escalates.                    │
+  │            │                                                   │
+  │            ▼                                                   │
+  │  agreement: high (resolved) or flagged (needs human review)    │
+  └──────────────────────────────────────────────────────────────┘
+                     │
+                     ▼
+       ┌─────────────────────────┐
+       │ Stage 6 — Store & search │
+       │ SQLite + FTS5, no vector │
+       │ DB, no embeddings        │
+       └─────────────────────────┘
+                     │
+                     ▼
+       ┌─────────────────────────────────────┐
+       │ api/main.py (FastAPI)                │
+       │  /api/search  — plain FTS5 keyword    │
+       │  /api/ask     — stopword-stripped FTS │
+       │                 lookup → qwen2.5:7b   │
+       │                 (local) synthesizes    │
+       │                 an answer + top source │
+       │  /api/sync/gmail — pulls new image     │
+       │                 attachments via Nango, │
+       │                 runs them through the  │
+       │                 same stage 2-6 chain   │
+       └─────────────────────────────────────┘
+                     │
+                     ▼
+              web/index.html
+        (single static page, read-only)
+```
+
+**Why cross-check is structured this way, not three models voting in parallel:** two
+independent models reading a clear document should usually agree — running a third
+model unconditionally just to triple-check agreement wastes a call most of the time
+and doesn't add a distinct capability. The arbiter is dispatched only on genuine
+disagreement, and its job is categorically different from the other two: it never
+sees the image, it reasons over two conflicting JSON extractions and the OCR text and
+either resolves the conflict or escalates it — a router calling in a specialist, not
+three votes on the same question.
+
+**Network boundary:** three things need network — the Gmail sync (Nango), the stage-5
+verifier (SSH tunnel to the Lambda GPU instance), and the conditional stage-5 arbiter
+(Respan). Everything else — the gates, stage 4's local Ollama call, storage, search,
+and ask — runs fully offline against the local SQLite file. Sync and index before
+going offline; search and ask need no network afterward.
+
 ## Setup
 
 Dependencies and the Python version are managed with [`uv`](https://docs.astral.sh/uv/) — no manual `venv`/`pip` steps.
