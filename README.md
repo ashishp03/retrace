@@ -9,7 +9,49 @@ Built for the Open Model Hack (2 people, 10:30–16:30, judged live).
 `ARCHITECTURE.md` is the original pre-build plan — stage 5 evolved once Lambda/Respan keys
 actually arrived (see `CHECKPOINT2.md` for the full story). This is what's actually running.
 
+```mermaid
+%%{init: {"look": "handDrawn", "theme": "base", "themeVariables": {"primaryColor": "#f3efe6", "primaryBorderColor": "#1b1a17", "primaryTextColor": "#1b1a17", "lineColor": "#1b1a17", "secondaryColor": "#f6d9dc", "tertiaryColor": "#ffffff"}}}%%
+flowchart TD
+    A1["Local photo folder"] --> STG[("Staging dir<br/>tagged photos or gmail")]
+    A2["Gmail, via Nango"] --> STG
+
+    STG --> META["Stage 2 — Metadata gate<br/>filename / EXIF / aspect ratio<br/>no model, ~2.5ms/image"]
+    META -->|survives| OCR["Stage 3 — OCR gate<br/>tesseract, ~108ms/image"]
+    META -->|demoted| DROP1(("dropped"))
+    OCR -->|survives| EXT["Stage 4 — Extract<br/>gemma4:e4b, local Ollama<br/>image + OCR hint to JSON"]
+    OCR -->|dropped| DROP2(("dropped<br/>ocr_text kept"))
+
+    subgraph XCHECK["Stage 5 — Cross-check"]
+        VER["Verifier: gemma3:27b<br/>on Lambda GPU, A100 40GB<br/>via SSH tunnel"]
+        AGREE{"Fields agree<br/>with stage 4?"}
+        ARB["Arbiter, conditional only<br/>claude-haiku-4-5 via Respan<br/>text-only, reasons over both<br/>extractions + OCR, no image"]
+        VER --> AGREE
+        AGREE -->|yes, usually| HIGH["agreement: high"]
+        AGREE -->|no| ARB
+        ARB --> RESOLVED["agreement: high or flagged"]
+    end
+
+    EXT --> VER
+    HIGH --> STORE
+    RESOLVED --> STORE
+    STORE[("Stage 6 — Store and search<br/>SQLite + FTS5, no vector DB")]
+
+    subgraph API["api/main.py — FastAPI"]
+        S1["/api/search — plain FTS5"]
+        S2["/api/ask — keywords to FTS5<br/>to qwen2.5:7b, local"]
+        S3["/api/sync/gmail — pulls new<br/>attachments, runs stages 2-6"]
+    end
+
+    STORE --> API
+    API --> UI["web/index.html<br/>single static page, read-only"]
+
+    style EXT fill:#f9d5a7,stroke:#c77b1e
+    style XCHECK fill:#f6d9dc,stroke:#b3222f
+    style STORE fill:#c9e8d8,stroke:#1e8c5a
 ```
+
+<!-- ASCII fallback, in case mermaid doesn't render in your viewer (GitHub renders it natively;
+some editor previews don't):
   Local photo folder ────┐
                           ├──▶  staging dir (tagged photos | gmail)
   Gmail, via Nango ───────┘            │
@@ -36,20 +78,13 @@ actually arrived (see `CHECKPOINT2.md` for the full story). This is what's actua
                      ▼
   ┌──────────────────────────────────────────────────────────────┐
   │ Stage 5 — Cross-check                                         │
-  │                                                                │
   │  Verifier: gemma3:27b on a Lambda GPU instance (A100 40GB),    │
   │  reached over an SSH tunnel — re-reads the image blind to      │
   │  stage 4's answer.                                             │
-  │            │                                                   │
-  │            ▼                                                   │
   │  Fields agree with stage 4? ──yes (usually)──▶ agreement: high │
-  │            │ no                                                │
-  │            ▼                                                   │
-  │  Arbiter (conditional only): claude-haiku-4-5 via Respan,      │
-  │  text-only — reasons over both extractions + OCR text, no      │
-  │  image. Decides a resolution, or escalates.                    │
-  │            │                                                   │
-  │            ▼                                                   │
+  │  no ──▶ Arbiter (conditional only): claude-haiku-4-5 via       │
+  │  Respan, text-only — reasons over both extractions + OCR       │
+  │  text, no image. Decides a resolution, or escalates.           │
   │  agreement: high (resolved) or flagged (needs human review)    │
   └──────────────────────────────────────────────────────────────┘
                      │
@@ -61,23 +96,11 @@ actually arrived (see `CHECKPOINT2.md` for the full story). This is what's actua
        └─────────────────────────┘
                      │
                      ▼
-       ┌─────────────────────────────────────┐
-       │ api/main.py (FastAPI)                │
-       │  /api/search  — plain FTS5 keyword    │
-       │  /api/ask     — stopword-stripped FTS │
-       │                 lookup → qwen2.5:7b   │
-       │                 (local) synthesizes    │
-       │                 an answer + top source │
-       │  /api/sync/gmail — pulls new image     │
-       │                 attachments via Nango, │
-       │                 runs them through the  │
-       │                 same stage 2-6 chain   │
-       └─────────────────────────────────────┘
+       api/main.py (FastAPI): /api/search, /api/ask, /api/sync/gmail
                      │
                      ▼
-              web/index.html
-        (single static page, read-only)
-```
+              web/index.html (single static page, read-only)
+-->
 
 **Why cross-check is structured this way, not three models voting in parallel:** two
 independent models reading a clear document should usually agree — running a third
