@@ -1,0 +1,296 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Bold;\f1\froman\fcharset0 Times-Roman;\f2\froman\fcharset0 Times-Italic;
+\f3\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red109\green109\blue109;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c50196\c50196\c50196;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid201\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid401\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid5}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}}
+\margl1440\margr1440\vieww28600\viewh18000\viewkind0
+\deftab720
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Kickoff prompt \'97 paste this into Claude Code / Cowork to start building Retrace\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 Copy everything below the line into a fresh Claude Code or Cowork session at the start of the hackathon. It carries the full build spec so the agent doesn't need to be re-briefed, and it ends with an explicit instruction to interrogate the architecture with you before it writes a line of code \'97 which matters today because you have 5.5 hours and no time to unwind a wrong assumption at hour three.\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 \strokec2 Project: Retrace\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 We're building 
+\f0\b Retrace
+\f1\b0  for the Open Model Hack (2 people, 10:30\'9616:30, judged live: 3-min demo + 2-min Q&A, top 3 win). One sentence: 
+\f2\i everyone's documents are scattered across a camera roll and an inbox, and none of them are searchable \'97 Retrace reads all of it locally, pulls out the structured content, and makes it queryable, with a second model checking the first one's work.
+\f1\i0 \
+You are helping me build this from scratch, in the time budget above. Treat this message as the full spec. Do not start writing code yet \'97 the last section of this prompt tells you what to ask me first.\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 Scope contract \'97 binding for today\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\fs24 \cf0 In scope, and all of it has to ship:
+\f1\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Two ingestion sources: a local photo folder, and Gmail attachments pulled via Nango\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Hard cap: most recent 800 images, stated openly in the demo\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Four document types only: receipt, card/ID, form/letter, screenshot-of-text\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 A cheap OCR gate that runs before the vision model ever sees an image\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 A two-model agreement check as the confidence signal (the multi-agent story)\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The larger verifier model (stage 5 below) served from 
+\f0\b Lambda
+\f1\b0  \'97 this is not a stretch goal, it's mandatory\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 SQLite + full-text search (FTS5), one search page\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b \cf0 Out of scope \'97 push back if I drift toward any of these:
+\f1\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 No fine-tuning, no LoRA, no training anything\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 No vector database, no embeddings, no semantic search\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 No mobile app \'97 it's a local web page\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 No auth, no accounts, no multi-user\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 No Drive, Dropbox, or a third source \'97 Gmail only\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 No editing or exporting records \'97 read-only\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 Architecture \'97 a six-stage cascade\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 The whole design turns on one number: a vision model over a few thousand images is too slow for a single day, so almost nothing should reach it. Stages 2 and 3 exist purely to protect stage 4. Build it in this order, and measure throughput in the first 30 minutes before writing anything else \'97 one image timed end-to-end through stage 4, fifty images timed through stages 2\'963. Those two numbers decide whether the 800-image cap is realistic or needs to drop to 300.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Ingest
+\f1\b0  
+\f2\i (seconds/image)
+\f1\i0  \'97 point at a local folder; decode HEIC to JPEG up front with 
+\f3\fs26 pillow-heif
+\f1\fs24 . In parallel, Nango pulls Gmail attachments (images and PDFs) into the same staging directory. Every file lands with a 
+\f3\fs26 source
+\f1\fs24  tag (
+\f3\fs26 photos
+\f1\fs24  | 
+\f3\fs26 gmail
+\f1\fs24 ).\
+\ls3\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Metadata gate \'97 free
+\f1\b0  
+\f2\i (~0 ms/image)
+\f1\i0  \'97 no model. Use filename heuristics, EXIF, aspect ratio, and dimensions to cheaply demote obvious non-documents (blurry, very wide, tiny). Keep this loose; its job is to filter, not decide.\
+\ls3\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 OCR gate \'97 cheap
+\f1\b0  
+\f2\i (~100\'96300 ms/image)
+\f1\i0  \'97 run 
+\f3\fs26 tesseract
+\f1\fs24  over survivors, count confident words, drop anything under a threshold (start at 8 words). Keep the OCR text \'97 it's reused as a hint in stage 4 and as search fallback.\
+\ls3\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	4	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Extract \'97 expensive, should hit ~5% of the library
+\f1\b0  
+\f2\i (~1\'963 s/image)
+\f1\i0  \'97 Gemma 4 vision on the image plus OCR text as a hint, one call, returning one strict JSON object (schema below). Classify the doc type and pull fields in the same pass.\
+\ls3\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	5	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Cross-check \'97 the confidence signal
+\f1\b0  
+\f2\i (on a sampled subset)
+\f1\i0  \'97 route the same image to a second, larger Gemma checkpoint through Respan and diff the JSON field by field. Agreement = high confidence; disagreement flags the record for human review in the UI. 
+\f0\b This second model must be hosted on Lambda, and it must be a Gemma checkpoint
+\f1\b0  \'97 that single deployment decision satisfies both the Lambda rubric line and the Gemma-on-Lambda bonus, so don't host anything else there.\
+\ls3\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	6	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Store & search
+\f1\b0  
+\f2\i (instant)
+\f1\i0  \'97 SQLite with an FTS5 virtual table over extracted fields and OCR text. No vector DB.\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 Data model\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 One table, one schema, no negotiation once agreed:\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 // one row per document found\
+\{\
+  "doc_type": "receipt" | "card" | "form" | "screenshot_text",\
+  "title": "Blue Bottle Coffee \'97 14 Aug 2026",\
+  "date": "2026-08-14",             // null if absent, never guessed\
+  "amount": 18.50,                   // receipts only\
+  "currency": "USD",\
+  "entity": "Blue Bottle Coffee",    // merchant, issuer, sender\
+  "identifiers": ["policy #A4471-B"],// card/policy/account numbers\
+  "key_values": \{ "expires": "2029-03" \},\
+  "summary": "one sentence, what this is"\
+\}\
+\
+// added by the pipeline, not the model\
+"source": "photos" | "gmail",\
+"file_path", "taken_at", "ocr_text",\
+"agreement": "high" | "flagged"     // from stage 5\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Instruct the extraction model to return 
+\f3\fs26 null
+\f1\fs24  rather than guess. A confidently wrong date is worse than a blank one.\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 Judging rubric \'97 what's actually being scored\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 Six lines, scored live, 3-min demo + 2-min Q&A:\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth3019\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth12072\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+
+\f0\b \cf0 Rubric line\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 Where it has to show up\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth3019\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth12072\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1\b0 \cf0 Nango API use\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Gmail attachment ingestion (stage 1) \'97 this is the second source and the biggest prize\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth3019\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth12072\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Lambda \'97 host an open model\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Stage 5's larger verifier, served from a Lambda endpoint \'97 
+\f0\b mandatory, not optional
+\f1\b0 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth3019\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth12072\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Respan use\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Routes both extraction calls (stages 4\'965); tag every call by stage/doc type so cost and latency read straight off their dashboard\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth3019\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth12072\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Multi-agent coordination\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 The two-model agreement check 
+\f2\i is
+\f1\i0  this \'97 a second model checks the first, disagreement routes to a human review queue\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth3019\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth12072\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Commercial viability\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Not a build item \'97 a rehearsed Q&A answer (who buys it, why local-only is the sellable feature, what you'd add)\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth3019\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth12072\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Bonus \'97 Gemma on Lambda\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Free with the Lambda line above, as long as that hosted model is Gemma\cell \lastrow\row
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 Sequencing implication: 
+\f0\b stand up the Lambda endpoint for the larger Gemma checkpoint in the first 30 minutes
+\f1\b0 , alongside getting Nango and Respan keys working \'97 not late in the day. It gates two rubric lines and the bonus at once, and a cold model server discovered at hour four is the single worst way to lose points here.\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 Constraints that matter for how you build this\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls4\ilvl0
+\f1\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Everything must work with the network off at demo time except for the Nango sync and the Respan-routed Lambda call for stage 5 \'97 venue wifi is a named risk. Pre-index before demos.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The model must return strict JSON. Use constrained/schema-forced decoding if the serving stack supports it; otherwise a strict parser that retries once and drops the record on a second failure. One bad response must never stall the batch.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 This is a two-person, ~5.5-hour build. Bias toward the smallest thing that works over the more "correct" thing. If you're about to add infrastructure (a queue, a second database, a config system) that isn't in this spec, say so and ask before adding it.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Testing today means fifteen known "needle" documents planted in the folder, re-checked after every change \'97 not a formal benchmark. Build ingestion so this is trivial to re-run.\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 \strokec2 Before you write any code, ask me about the following\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 I want you to walk through these with me as questions \'97 batch them however makes sense, but don't start scaffolding the project until we've settled the ones that change file layout or dependencies. I'd rather spend five minutes on this now than redo a foundational choice at hour three.\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b \cf0 Runtime & serving
+\f1\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls5\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 How is Gemma 4 vision actually going to run for stage 4 \'97 a local serving stack (Ollama, llama.cpp/LM Studio, vLLM, MLX), or is it also going through Respan? What's already installed on this machine, and do I have GPU access locally, or is everything model-serving-side going through Respan/Lambda?\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 For the stage-5 Lambda deployment: are we spinning up a Lambda GPU instance ourselves (which image/template, how we deploy the serving stack onto it), or using a Lambda-hosted inference API endpoint if one exists for Gemma? Do you already have a Lambda account/API key, or do we need to provision one first?\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b \cf0 Integrations
+\f1\b0  3. Do you already have Nango and Respan accounts and API keys, or do we need to create them and walk through OAuth app setup for Gmail? Is there a specific Google account you want to test the Gmail sync against? 4. Any existing Respan project/routing config I should reuse, or are we creating that from scratch?\
+
+\f0\b Application shape
+\f1\b0  5. Backend language/framework preference \'97 Python with FastAPI/Flask (matches 
+\f3\fs26 pytesseract
+\f1\fs24 /
+\f3\fs26 pillow-heif
+\f1\fs24 /
+\f3\fs26 sqlite3
+\f1\fs24  naturally), or something else? 6. Frontend for the single search page \'97 plain HTML/JS/CSS served by the backend, or a lightweight framework? Given the "no mobile app, it's a local web page" constraint, I'd default to the simplest option unless you want something specific. 7. How should indexing run \'97 a CLI/script triggered on demand, a background worker with a progress endpoint the UI polls (the spec calls for a live progress counter during the demo), or something else? 8. Repo/folder structure \'97 one project with 
+\f3\fs26 ingest/
+\f1\fs24 , 
+\f3\fs26 pipeline/
+\f1\fs24 , 
+\f3\fs26 api/
+\f1\fs24 , 
+\f3\fs26 web/
+\f1\fs24  subfolders, or do you want it split differently?\
+
+\f0\b Data & secrets
+\f1\b0  9. Where do API keys and secrets live \'97 a 
+\f3\fs26 .env
+\f1\fs24  file, and is that already set up, or should I scaffold it along with a 
+\f3\fs26 .env.example
+\f1\fs24 ? 10. Is there a real photo folder and Gmail inbox you want me to point at during setup, or should I build against synthetic/sample documents until those are ready?\
+
+\f0\b Testing & demo
+\f1\b0  11. Do you want the fifteen-needle test as an actual automated script I write now (so it's ready to re-run all day), or a manual checklist you'll run by hand? 12. Anything about the demo flow (the folder you'll actually demo, the three search queries) you want locked in now so I build the UI around those exact queries?\
+Once we've settled these, propose a short implementation plan mapped to the six-stage architecture above, then start with whatever gates the rubric earliest \'97 Nango auth and the Lambda endpoint for the stage-5 model \'97 before touching the extraction pipeline or UI.\
+\
+Generate a CLAUDE.md file at root level. Give us a system design architecture diagrams as a mermaid diagram or something else and keep it at root level. We need a deep understanding of this system.\
+}
