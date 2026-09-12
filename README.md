@@ -2,7 +2,7 @@
 
 Everyone's documents are scattered across a camera roll and an inbox, and none of them are searchable. Retrace reads all of it locally, pulls out the structured content, and makes it queryable, with a second model checking the first one's work.
 
-Built for the Open Model Hack (2 people, 10:30–16:30, judged live).
+Built for the Gradient X Google Deepmind Open Model Hackathon.
 
 ## System design (simplified, for slides)
 
