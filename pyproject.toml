@@ -5,10 +5,12 @@ description = "Local-first document search over a camera roll and Gmail attachme
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.141.1",
+    "openai",
     "pillow>=12.3.0",
     "pillow-heif>=1.7.0",
     "pytesseract>=0.3.13",
     "python-dotenv>=1.2.3",
+    "requests>=2.34.2",
     "uvicorn>=0.52.4",
 ]
 
