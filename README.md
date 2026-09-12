@@ -4,6 +4,8 @@ Everyone's documents are scattered across a camera roll and an inbox, and none o
 
 Built for the Open Model Hack (2 people, 10:30–16:30, judged live).
 
+![Retrace UI — asking a question and getting an answer with its cited, verified source](docs/screenshot-ui.png)
+
 ## System design (simplified, for slides)
 
 The five-second version — one screen, wide enough to drop straight into a slide.
