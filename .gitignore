@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.local
+
+# Real personal documents — never commit
+staging/
+*/staging/
+*/photos/
+!tests/fixtures/**
+
+# Built artifacts
+*.duckdb
+*.sqlite
+*.sqlite3
+retrace.db

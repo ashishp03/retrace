@@ -4,6 +4,29 @@ Everyone's documents are scattered across a camera roll and an inbox, and none o
 
 Built for the Open Model Hack (2 people, 10:30–16:30, judged live).
 
+## Setup
+
+Dependencies and the Python version are managed with [`uv`](https://docs.astral.sh/uv/) — no manual `venv`/`pip` steps.
+
+1. Install `uv` if you don't have it: `curl -LsSf https://astral.sh/uv/install.sh | sh` (or `brew install uv`)
+2. Clone the repo, then from its root:
+   ```bash
+   uv sync
+   ```
+   This creates `.venv/`, installs the exact pinned versions from `uv.lock`, and installs the Python version pinned in `.python-version` (3.12) if you don't already have it.
+3. Copy the secrets template and fill in your own keys — never commit `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+   `.env` holds Nango, Respan, and Lambda credentials plus local paths (photo folder, DB path, Ollama host/model). A `.claude/` hook blocks direct edits/commits of `.env` from inside Claude Code — edit it by hand.
+4. Run any project script with `uv run`, e.g.:
+   ```bash
+   uv run python tests/needles/generate_needles.py   # regenerate the 15 synthetic test docs
+   ```
+5. External runtime dependencies (not managed by `uv`): [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) (`brew install tesseract`) for stage 3, and [Ollama](https://ollama.com) for the local stage-4 vision model.
+
+Adding a dependency later: `uv add <package>` (or `uv add --group dev <package>` for dev-only tools) — this updates both `pyproject.toml` and `uv.lock` together, so always commit both.
+
 ## Docs
 
 - [`CLAUDE.md`](./CLAUDE.md) — full scope contract, the six-stage extraction cascade, data model, judging rubric, and the open setup questions still to be resolved

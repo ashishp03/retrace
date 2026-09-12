@@ -1,0 +1,18 @@
+[project]
+name = "retrace"
+version = "0.1.0"
+description = "Local-first document search over a camera roll and Gmail attachments, extracted with a two-model agreement check."
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.141.1",
+    "pillow>=12.3.0",
+    "pillow-heif>=1.7.0",
+    "pytesseract>=0.3.13",
+    "python-dotenv>=1.2.3",
+    "uvicorn>=0.52.4",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
