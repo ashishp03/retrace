@@ -1,0 +1,287 @@
+[
+  {
+    "file": "receipt_001.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "receipt",
+      "entity": "Glenn-Vincent",
+      "date": "2026-04-05",
+      "amount": 126.36,
+      "currency": "USD"
+    },
+    "style": "restaurant",
+    "phone_photo": true
+  },
+  {
+    "file": "receipt_002.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "receipt",
+      "entity": "North Amanda Parking Authority",
+      "date": "2025-08-03",
+      "amount": 26.56,
+      "currency": "USD"
+    },
+    "style": "parking",
+    "phone_photo": true
+  },
+  {
+    "file": "receipt_003.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "receipt",
+      "entity": "Williams, Hendrix and Oconnell",
+      "date": "2026-01-02",
+      "amount": 3.47,
+      "currency": "USD"
+    },
+    "style": "coffee_shop",
+    "phone_photo": true
+  },
+  {
+    "file": "receipt_004.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "receipt",
+      "entity": "Nguyenshire Parking Authority",
+      "date": "2025-11-23",
+      "amount": 7.96,
+      "currency": "USD"
+    },
+    "style": "parking",
+    "phone_photo": true
+  },
+  {
+    "file": "receipt_005.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "receipt",
+      "entity": "Hall, Phillips and Smith",
+      "date": "2024-11-12",
+      "amount": 19.6,
+      "currency": "USD"
+    },
+    "style": "coffee_shop",
+    "phone_photo": true
+  },
+  {
+    "file": "receipt_006.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "receipt",
+      "entity": "Chang-Palmer",
+      "date": "2024-10-02",
+      "amount": 8.73,
+      "currency": "USD"
+    },
+    "style": "coffee_shop",
+    "phone_photo": true
+  },
+  {
+    "file": "card_007.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "card",
+      "identifiers": [
+        "M-89770-A"
+      ],
+      "key_values": {
+        "since": "2021"
+      }
+    },
+    "phone_photo": true
+  },
+  {
+    "file": "card_008.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "card",
+      "identifiers": [
+        "M6877-C"
+      ],
+      "key_values": {
+        "expires": "2031-11"
+      }
+    },
+    "phone_photo": true
+  },
+  {
+    "file": "card_009.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "card",
+      "identifiers": [
+        "E-1985"
+      ],
+      "key_values": {
+        "dept": "Outdoor activities/e"
+      }
+    },
+    "phone_photo": true
+  },
+  {
+    "file": "card_010.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "card",
+      "identifiers": [
+        "DL-0772837"
+      ],
+      "key_values": {
+        "dob": "1977-10-03"
+      }
+    },
+    "phone_photo": true
+  },
+  {
+    "file": "card_011.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "card",
+      "identifiers": [
+        "ACCT-66304940"
+      ],
+      "key_values": {
+        "balance": "$1,555.52"
+      }
+    },
+    "phone_photo": true
+  },
+  {
+    "file": "form_012.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "form",
+      "date": "2026-02-02"
+    },
+    "style": "utility_notice",
+    "phone_photo": true
+  },
+  {
+    "file": "form_013.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "form",
+      "date": "2026-06-20"
+    },
+    "style": "dmv_notice",
+    "phone_photo": true
+  },
+  {
+    "file": "form_014.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "form",
+      "date": "2025-12-08"
+    },
+    "style": "lease_notice",
+    "phone_photo": true
+  },
+  {
+    "file": "form_015.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "form",
+      "date": "2026-07-12"
+    },
+    "style": "medical_form",
+    "phone_photo": true
+  },
+  {
+    "file": "form_016.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "form",
+      "date": "2025-11-08"
+    },
+    "style": "invoice",
+    "phone_photo": true
+  },
+  {
+    "file": "screenshot_017.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "screenshot_text"
+    },
+    "style": "messages_dark",
+    "phone_photo": false
+  },
+  {
+    "file": "screenshot_018.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "screenshot_text"
+    },
+    "style": "messages_light",
+    "phone_photo": false
+  },
+  {
+    "file": "screenshot_019.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "screenshot_text"
+    },
+    "style": "email",
+    "phone_photo": false
+  },
+  {
+    "file": "screenshot_020.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "screenshot_text"
+    },
+    "style": "calendar",
+    "phone_photo": false
+  },
+  {
+    "file": "screenshot_021.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "screenshot_text"
+    },
+    "style": "banking_alert",
+    "phone_photo": false
+  },
+  {
+    "file": "junk_landscape_022.png",
+    "expected_outcome": "dropped_at_ocr",
+    "expected_fields": {},
+    "kind": "landscape",
+    "phone_photo": true
+  },
+  {
+    "file": "junk_selfie_023.png",
+    "expected_outcome": "dropped_at_ocr",
+    "expected_fields": {},
+    "kind": "selfie",
+    "phone_photo": true
+  },
+  {
+    "file": "junk_meme_024.png",
+    "expected_outcome": "dropped_at_ocr",
+    "expected_fields": {},
+    "kind": "meme",
+    "phone_photo": true
+  },
+  {
+    "file": "junk_tiny_thumbnail_025.png",
+    "expected_outcome": "dropped_at_metadata",
+    "expected_fields": {},
+    "kind": "tiny_thumbnail",
+    "phone_photo": false
+  },
+  {
+    "file": "junk_wide_panorama_026.png",
+    "expected_outcome": "dropped_at_metadata",
+    "expected_fields": {},
+    "kind": "wide_panorama",
+    "phone_photo": true
+  },
+  {
+    "file": "junk_blurry_photo_027.png",
+    "expected_outcome": "dropped_at_ocr",
+    "expected_fields": {},
+    "kind": "blurry_photo",
+    "phone_photo": true
+  }
+]
