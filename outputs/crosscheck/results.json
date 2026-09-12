@@ -1,0 +1,770 @@
+{
+  "target": "../tests/sample_batch/docs",
+  "elapsed_s": 137.96129145899613,
+  "verifier_model": "gemma3:27b",
+  "arbiter_model": "anthropic/claude-haiku-4-5",
+  "high": 18,
+  "flagged_count": 0,
+  "arbiter_dispatched": 10,
+  "records": [
+    {
+      "file": "card_007.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "card",
+        "title": "MEMBER CARD",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "Name": "Jasmine Rubio",
+          "Member ID": "M-89770-A",
+          "Since": "2021"
+        },
+        "summary": "This is a membership card displaying the user's name, member ID, and start date."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "card",
+        "title": "MEMBER CARD",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [
+          "M-89770-A"
+        ],
+        "key_values": {
+          "Name": "Jasmine Rubio",
+          "Member ID": "M-89770-A",
+          "Since": "2021"
+        },
+        "summary": "This is a member card for Jasmine Rubio with ID M-89770-A, active since 2021."
+      },
+      "verifier_error": null,
+      "diffs": [],
+      "arbiter": null
+    },
+    {
+      "file": "card_008.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "card",
+        "title": "Health Insurance Policy",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [
+          "M6877-C"
+        ],
+        "key_values": {
+          "Insured": "Julie Baird",
+          "Policy #": "M6877-C",
+          "Expires": "2031-11"
+        },
+        "summary": "This document is a card detailing health insurance policy information for Julie Baird."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "card",
+        "title": "HEALTH INSURANCE",
+        "date": "2031-11-01",
+        "amount": null,
+        "currency": null,
+        "entity": "Julie Baird",
+        "identifiers": [
+          "M6877-C"
+        ],
+        "key_values": {
+          "Insured": "Julie Baird",
+          "Policy #": "M6877-C",
+          "Expires": "2031-11"
+        },
+        "summary": "This is a health insurance card for Julie Baird with policy number M6877-C expiring on November 1, 2031."
+      },
+      "verifier_error": null,
+      "diffs": [
+        "date",
+        "entity"
+      ],
+      "arbiter": {
+        "agreement": "resolved",
+        "resolution": {
+          "date": null,
+          "entity": "Julie Baird"
+        },
+        "reasoning": "The OCR text shows 'Expires: 2031-11' (expiration date, not issue date), so 'date' should be null; 'entity' correctly identifies the insured person Julie Baird as the primary entity on the card."
+      }
+    },
+    {
+      "file": "card_009.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "card",
+        "title": "Employee ID Card",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "Name": "Gabrielle Collins",
+          "Dept": "Outdoor activities/e",
+          "ID": "E-1985"
+        },
+        "summary": "This is an employee identification card for Gabrielle Collins."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "card",
+        "title": "EMPLOYEE ID",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [
+          "E-1985"
+        ],
+        "key_values": {
+          "Name": "Gabrielle Collins",
+          "Dept": "Outdoor activities/e"
+        },
+        "summary": "This is an employee ID card for Gabrielle Collins in the Outdoor activities department with ID E-1985."
+      },
+      "verifier_error": null,
+      "diffs": [],
+      "arbiter": null
+    },
+    {
+      "file": "card_010.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "card",
+        "title": "Driver License",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "Name": "David Garcia",
+          "DOB": "1977-10-03",
+          "License #": "DL-0772837"
+        },
+        "summary": "A driver's license card for David Garcia."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "card",
+        "title": "DRIVER LICENSE",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": "David Garcia",
+        "identifiers": [
+          "DL-0772837"
+        ],
+        "key_values": {
+          "Name": "David Garcia",
+          "DOB": "1977-10-03",
+          "License #": "DL-0772837"
+        },
+        "summary": "This is a driver's license belonging to David Garcia, born on October 3, 1977, with license number DL-0772837."
+      },
+      "verifier_error": null,
+      "diffs": [
+        "entity"
+      ],
+      "arbiter": {
+        "agreement": "resolved",
+        "resolution": {
+          "entity": "David Garcia"
+        },
+        "reasoning": "The entity field should contain the primary subject of the document, which is clearly David Garcia as shown in the OCR text and confirmed by both extractors' key_values; Extractor B correctly identified this while Extractor A left it null."
+      }
+    },
+    {
+      "file": "card_011.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "form",
+        "title": "Account Summary",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [
+          "ACCT-66304949"
+        ],
+        "key_values": {
+          "Name": "Jennifer Reyes",
+          "Balance": "$1,555.52"
+        },
+        "summary": "This document is an account summary showing a name, account number, and current balance."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "screenshot_text",
+        "title": "ACCOUNT SUMMARY",
+        "date": null,
+        "amount": 1555.52,
+        "currency": "$",
+        "entity": "Jennifer Reyes",
+        "identifiers": [
+          "ACCT-66304940"
+        ],
+        "key_values": {
+          "Name": "Jennifer Reyes",
+          "Account #": "ACCT-66304940",
+          "Balance": "$1,555.52"
+        },
+        "summary": "This is an account summary displaying Jennifer Reyes' account number and balance of $1,555.52."
+      },
+      "verifier_error": null,
+      "diffs": [
+        "doc_type",
+        "amount",
+        "entity"
+      ],
+      "arbiter": {
+        "agreement": "resolved",
+        "resolution": {
+          "doc_type": "form",
+          "amount": 1555.52,
+          "entity": "Jennifer Reyes"
+        },
+        "reasoning": "OCR hint confirms this is a form-type account summary; amount of 1555.52 is clearly present in the Balance field; entity is Jennifer Reyes; however, note that Extractor B's account number identifier (ACCT-66304940) appears to be a transcription error compared to the OCR hint (ACCT-66304949)."
+      }
+    },
+    {
+      "file": "form_012.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "form",
+        "title": "North Veronicaborough Water Utility Notice",
+        "date": "2026-02-02",
+        "amount": null,
+        "currency": null,
+        "entity": "North Veronicaborough Water Utility",
+        "identifiers": [],
+        "key_values": {
+          "account": "7407840",
+          "effective_date": "2026-02-02"
+        },
+        "summary": "This is a utility notice confirming that a resident's service address has been updated in the billing system."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "screenshot_text",
+        "title": "North Veronicaborough Water Utility \u2013 Notice",
+        "date": "2026-02-02",
+        "amount": null,
+        "currency": null,
+        "entity": "North Veronicaborough Water Utility",
+        "identifiers": [
+          "7407840"
+        ],
+        "key_values": {
+          "Account": "7407840",
+          "Effective": "2026-02-02"
+        },
+        "summary": "This notice confirms that a service address has been updated in the billing system for account 7407840, effective February 2nd, 2026."
+      },
+      "verifier_error": null,
+      "diffs": [
+        "doc_type"
+      ],
+      "arbiter": {
+        "agreement": "resolved",
+        "resolution": {
+          "doc_type": "form"
+        },
+        "reasoning": "The OCR text shows a structured utility notice with labeled fields (Account, Effective date, etc.), which is characteristic of a form rather than a screenshot_text; Extractor A's classification is correct."
+      }
+    },
+    {
+      "file": "form_013.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "form",
+        "title": "Renewal Notice",
+        "date": "2026-06-20",
+        "amount": null,
+        "currency": null,
+        "entity": "State DMV",
+        "identifiers": [],
+        "key_values": {
+          "Plate": "N546114",
+          "Renewal fee": "$49.00",
+          "Due date": "2026-06-20"
+        },
+        "summary": "This is a State DMV renewal notice informing the recipient that their vehicle registration is due for renewal."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "form",
+        "title": "Renewal Notice",
+        "date": "2026-06-20",
+        "amount": 49.0,
+        "currency": "$",
+        "entity": "State DMV",
+        "identifiers": [
+          "N54611"
+        ],
+        "key_values": {
+          "Plate": "N54611",
+          "Renewal fee": "$49.00",
+          "Due date": "2026-06-20"
+        },
+        "summary": "This is a vehicle registration renewal notice from the State DMV with a fee of $49.00 due on June 20, 2026."
+      },
+      "verifier_error": null,
+      "diffs": [
+        "amount"
+      ],
+      "arbiter": {
+        "agreement": "resolved",
+        "resolution": {
+          "amount": 49.0
+        },
+        "reasoning": "The OCR text clearly shows 'Renewal fee: $49.00', which corresponds to an amount of 49.0 (with currency '$'), making Extractor B's numeric parsing of the amount correct while Extractor A's null value is incomplete."
+      }
+    },
+    {
+      "file": "form_014.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "form",
+        "title": "Lease Notice",
+        "date": "2025-12-08",
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "tenant": "Wood, Dean and Martinez",
+          "renewal_date": "2025-12-08",
+          "notice_period": "60 days prior"
+        },
+        "summary": "This is a lease notice informing the tenant that their lease will automatically renew on a specific date unless 60 days' written notice is provided."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "screenshot_text",
+        "title": "Lease Notice",
+        "date": "2025-12-08",
+        "amount": null,
+        "currency": null,
+        "entity": "Wood, Dean and Martinez",
+        "identifiers": [],
+        "key_values": {},
+        "summary": "This is a lease notice informing Wood, Dean and Martinez that their lease will automatically renew on 2025-12-08 unless 60 days' written notice is given."
+      },
+      "verifier_error": null,
+      "diffs": [
+        "doc_type",
+        "entity"
+      ],
+      "arbiter": {
+        "agreement": "resolved",
+        "resolution": {
+          "doc_type": "form",
+          "entity": "Wood, Dean and Martinez"
+        },
+        "reasoning": "The OCR text clearly identifies this as a lease notice form (standard document type for such notices), and 'Wood, Dean and Martinez' is the entity/tenant being addressed, making Extractor A's doc_type correct and Extractor B's entity field correct."
+      }
+    },
+    {
+      "file": "form_015.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "form",
+        "title": "Delacruz and Sons Medical Group - Patient Visit Summary",
+        "date": "2026-07-12",
+        "amount": null,
+        "currency": null,
+        "entity": "Delacruz and Sons Medical Group",
+        "identifiers": [],
+        "key_values": {
+          "Patient": "Emily Perez",
+          "Provider": "Dr. Bishop"
+        },
+        "summary": "This document is a patient visit summary from Delacruz and Sons Medical Group for Emily Perez."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "form",
+        "title": "Delacruz and Sons Medical Group",
+        "date": "2026-07-12",
+        "amount": null,
+        "currency": null,
+        "entity": "Delacruz and Sons Medical Group",
+        "identifiers": [],
+        "key_values": {
+          "Patient": "Emily Perez",
+          "Visit date": "2026-07-12",
+          "Provider": "Dr. Bishop"
+        },
+        "summary": "This is a patient visit summary from Delacruz and Sons Medical Group for Emily Perez, with a visit date of July 12, 2026, and provider Dr. Bishop."
+      },
+      "verifier_error": null,
+      "diffs": [],
+      "arbiter": null
+    },
+    {
+      "file": "form_016.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "form",
+        "title": "Shepard, Gonzalez and Clements - Invoice",
+        "date": "2025-11-08",
+        "amount": 559.58,
+        "currency": "USD",
+        "entity": "Shepard, Gonzalez and Clements",
+        "identifiers": [],
+        "key_values": {
+          "Invoice #": "925043",
+          "Bill to": "Mr. Anthony Rodriguez"
+        },
+        "summary": "This is an invoice from Shepard, Gonzalez and Clements for $559.58."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "screenshot_text",
+        "title": "Invoice",
+        "date": "2025-11-08",
+        "amount": 559.58,
+        "currency": null,
+        "entity": "Shepard, Gonzalez and Clements",
+        "identifiers": [
+          "925043"
+        ],
+        "key_values": {
+          "Invoice #": "925043",
+          "Date": "2025-11-08",
+          "Amount due": "$559.58",
+          "Bill to": "Mr. Anthony Rodriguez"
+        },
+        "summary": "This is an invoice from Shepard, Gonzalez and Clements dated 2025-11-08 for $559.58 billed to Mr. Anthony Rodriguez."
+      },
+      "verifier_error": null,
+      "diffs": [
+        "doc_type"
+      ],
+      "arbiter": {
+        "agreement": "resolved",
+        "resolution": {
+          "doc_type": "invoice"
+        },
+        "reasoning": "The OCR text clearly shows 'Invoice' in the title and contains standard invoice fields (Invoice #, Date, Amount due, Bill to), making this definitively an invoice document rather than a generic screenshot_text or form."
+      }
+    },
+    {
+      "file": "receipt_002.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "receipt",
+        "title": "North Amanda Parking Authority Receipt",
+        "date": "2025-08-03",
+        "amount": 26.56,
+        "currency": "USD",
+        "entity": "North Amanda Parking Authority",
+        "identifiers": [],
+        "key_values": {
+          "Parking fee": "24.59",
+          "Tax": "1.97"
+        },
+        "summary": "This is a receipt from the North Amanda Parking Authority detailing a parking fee and tax payment."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "receipt",
+        "title": "NORTH AMANDA PARKING AUTHORITY",
+        "date": "2025-08-03",
+        "amount": 26.56,
+        "currency": "USD",
+        "entity": "North Amanda Parking Authority",
+        "identifiers": [],
+        "key_values": {
+          "Parking fee": 24.59,
+          "Tax": 1.97,
+          "TOTAL": 26.56
+        },
+        "summary": "This receipt from the North Amanda Parking Authority details a parking fee of $24.59 with $1.97 in tax, resulting in a total of $26.56."
+      },
+      "verifier_error": null,
+      "diffs": [],
+      "arbiter": null
+    },
+    {
+      "file": "receipt_003.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "receipt",
+        "title": "Williams, Hendrix and Oconnell Receipt",
+        "date": "2026-01-02",
+        "amount": 3.47,
+        "currency": "USD",
+        "entity": "WILLIAMS, HENDRIX AND OCONNELL",
+        "identifiers": [],
+        "key_values": {
+          "Date": "2026-01-02",
+          "Cold Brew": "3.21",
+          "Tax": "0.26",
+          "TOTAL": "3.47"
+        },
+        "summary": "A receipt detailing a charge of 3.47 USD from WILLIAMS, HENDRIX AND OCONNELL for items including Cold Brew and Tax."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "receipt",
+        "title": "WILLIAMS, HENDRIX AND OCONNELL",
+        "date": "2026-01-02",
+        "amount": 3.47,
+        "currency": "USD",
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "Cold Brew": "3.21",
+          "Tax": "0.26",
+          "TOTAL": "3.47"
+        },
+        "summary": "This receipt from WILLIAMS, HENDRIX AND OCONNELL shows a purchase of Cold Brew for $3.21 with $0.26 in tax, totaling $3.47."
+      },
+      "verifier_error": null,
+      "diffs": [
+        "entity"
+      ],
+      "arbiter": {
+        "agreement": "resolved",
+        "resolution": {
+          "entity": "WILLIAMS, HENDRIX AND OCONNELL"
+        },
+        "reasoning": "The OCR text explicitly shows 'WILLIAMS, HENDRIX AND OCONNELL' as the entity name at the top of the receipt, making Extractor A's extraction correct and Extractor B's null value incorrect."
+      }
+    },
+    {
+      "file": "receipt_004.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "receipt",
+        "title": "Nguyenshire Parking Authority Receipt",
+        "date": "2025-11-23",
+        "amount": 7.96,
+        "currency": "USD",
+        "entity": "NGUYENSHIRE PARKING AUTHORITY",
+        "identifiers": [],
+        "key_values": {
+          "Parking fee": "7.37",
+          "Tax": "0.59",
+          "TOTAL": "7.96"
+        },
+        "summary": "This is a parking payment receipt from the Nguyenshire Parking Authority for a total of $7.96."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "receipt",
+        "title": "NGUYENSHIRE PARKING AUTHORITY",
+        "date": "2025-11-23",
+        "amount": 7.96,
+        "currency": "USD",
+        "entity": "NGUYENSHIRE PARKING AUTHORITY",
+        "identifiers": [],
+        "key_values": {
+          "Parking fee": 7.37,
+          "Tax": 0.59,
+          "TOTAL": 7.96
+        },
+        "summary": "This receipt from NGUENSHIRE PARKING AUTHORITY shows a total of $7.96, including a parking fee of $7.37 and tax of $0.59."
+      },
+      "verifier_error": null,
+      "diffs": [],
+      "arbiter": null
+    },
+    {
+      "file": "screenshot_017.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "screenshot_text",
+        "title": null,
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "Messages": null
+        },
+        "summary": "This document displays a section for 'Messages' with placeholder text regarding related statements."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "screenshot_text",
+        "title": "Messages",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {},
+        "summary": "This is a screenshot of a messaging application interface with a prompt to draw relationships between statements."
+      },
+      "verifier_error": null,
+      "diffs": [],
+      "arbiter": null
+    },
+    {
+      "file": "screenshot_018.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "screenshot_text",
+        "title": "Messages",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "message 1": "Mind upon with call look.",
+          "message 2": "Pass exactly true daughter admit especially knowledge art."
+        },
+        "summary": "This document displays two example messages in a text format."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "screenshot_text",
+        "title": "Messages",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {},
+        "summary": "The image shows a screenshot of a messaging app with two text messages: \"Mind upon with call look.\" and \"Pass exactly true daughter admit especially knowledge art.\""
+      },
+      "verifier_error": null,
+      "diffs": [],
+      "arbiter": null
+    },
+    {
+      "file": "screenshot_019.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "screenshot_text",
+        "title": "Mail \u2014 Example most win",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "From": "coxpatricia@example.com"
+        },
+        "summary": "A screenshot of an email message with the subject 'Mail \u2014 Example most win'."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "screenshot_text",
+        "title": "Mail \u2014 Example most win",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": "coxpatricia@example.com",
+        "identifiers": [],
+        "key_values": {},
+        "summary": "This is a screenshot of an email with the sender address coxpatricia@example.com and the message 'Once cell along adult travel red while again player lot'."
+      },
+      "verifier_error": null,
+      "diffs": [
+        "entity"
+      ],
+      "arbiter": {
+        "agreement": "resolved",
+        "resolution": {
+          "entity": "coxpatricia@example.com"
+        },
+        "reasoning": "The OCR text clearly shows 'From: coxpatricia@example.com', making the sender email address the primary entity of this email screenshot, which Extractor B correctly identified while Extractor A left it null."
+      }
+    },
+    {
+      "file": "screenshot_020.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "screenshot_text",
+        "title": "Calendar Event",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "event_time": "14:10:26",
+          "event_title": "Five yourself",
+          "attendee": "Jillianberg"
+        },
+        "summary": "This is a screenshot showing a calendar event titled 'Five yourself' scheduled for 14:10:26 for Jillianberg."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "screenshot_text",
+        "title": "Calendar",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {},
+        "summary": "This is a screenshot of a calendar showing an event titled \"Five yourself\" scheduled for 14:10:26 by Jillianberg."
+      },
+      "verifier_error": null,
+      "diffs": [],
+      "arbiter": null
+    },
+    {
+      "file": "screenshot_021.png",
+      "agreement": "high",
+      "stage4_fields": {
+        "doc_type": "screenshot_text",
+        "title": "Bank Alert",
+        "date": "2026-08-17",
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "charge": "$28.46",
+          "merchant": "Bell-Jennings"
+        },
+        "summary": "This document is a bank alert notification detailing a charge at Bell-Jennings."
+      },
+      "verifier_ok": true,
+      "verifier_fields": {
+        "doc_type": "screenshot_text",
+        "title": "Bank Alert",
+        "date": "2026-08-17",
+        "amount": 28.46,
+        "currency": null,
+        "entity": "Bell-Jennings",
+        "identifiers": [],
+        "key_values": {},
+        "summary": "A bank alert shows a charge of $28.46 at Bell-Jennings on August 17, 2026."
+      },
+      "verifier_error": null,
+      "diffs": [
+        "amount",
+        "entity"
+      ],
+      "arbiter": {
+        "agreement": "resolved",
+        "resolution": {
+          "amount": 28.46,
+          "entity": "Bell-Jennings"
+        },
+        "reasoning": "The OCR text clearly shows a charge of $28.46 at Bell-Jennings, making Extractor B's structured values (numeric amount and entity name) the correct extraction, while Extractor A failed to parse these fields into their proper semantic categories."
+      }
+    }
+  ]
+}

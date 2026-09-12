@@ -1,0 +1,313 @@
+{
+  "target": "../tests/sample_batch/docs",
+  "elapsed_ms": 11.261084000580013,
+  "per_image_ms": 0.41707718520666714,
+  "passed": 25,
+  "total": 27,
+  "results": [
+    {
+      "file": "card_007.png",
+      "passed": true,
+      "reasons": [
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": false
+    },
+    {
+      "file": "card_008.png",
+      "passed": true,
+      "reasons": [
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": false
+    },
+    {
+      "file": "card_009.png",
+      "passed": true,
+      "reasons": [
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": false
+    },
+    {
+      "file": "card_010.png",
+      "passed": true,
+      "reasons": [
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": false
+    },
+    {
+      "file": "card_011.png",
+      "passed": true,
+      "reasons": [
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": false
+    },
+    {
+      "file": "form_012.png",
+      "passed": true,
+      "reasons": [
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": false
+    },
+    {
+      "file": "form_013.png",
+      "passed": true,
+      "reasons": [
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": false
+    },
+    {
+      "file": "form_014.png",
+      "passed": true,
+      "reasons": [
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": false
+    },
+    {
+      "file": "form_015.png",
+      "passed": true,
+      "reasons": [
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": false
+    },
+    {
+      "file": "form_016.png",
+      "passed": true,
+      "reasons": [
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": false
+    },
+    {
+      "file": "junk_blurry_photo_027.png",
+      "passed": true,
+      "reasons": [
+        "filename hint matched",
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": true
+    },
+    {
+      "file": "junk_landscape_022.png",
+      "passed": true,
+      "reasons": [
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": false
+    },
+    {
+      "file": "junk_meme_024.png",
+      "passed": true,
+      "reasons": [
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": false
+    },
+    {
+      "file": "junk_selfie_023.png",
+      "passed": true,
+      "reasons": [
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": false
+    },
+    {
+      "file": "junk_tiny_thumbnail_025.png",
+      "passed": false,
+      "reasons": [
+        "too small (30x30)"
+      ],
+      "width": 30,
+      "height": 30,
+      "has_exif": false,
+      "filename_hint": false
+    },
+    {
+      "file": "junk_wide_panorama_026.png",
+      "passed": false,
+      "reasons": [
+        "extreme aspect ratio (4200x220 = 19.1:1)"
+      ],
+      "width": 4200,
+      "height": 220,
+      "has_exif": true,
+      "filename_hint": false
+    },
+    {
+      "file": "receipt_001.png",
+      "passed": true,
+      "reasons": [
+        "filename hint matched",
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": true
+    },
+    {
+      "file": "receipt_002.png",
+      "passed": true,
+      "reasons": [
+        "filename hint matched",
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": true
+    },
+    {
+      "file": "receipt_003.png",
+      "passed": true,
+      "reasons": [
+        "filename hint matched",
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": true
+    },
+    {
+      "file": "receipt_004.png",
+      "passed": true,
+      "reasons": [
+        "filename hint matched",
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": true
+    },
+    {
+      "file": "receipt_005.png",
+      "passed": true,
+      "reasons": [
+        "filename hint matched",
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": true
+    },
+    {
+      "file": "receipt_006.png",
+      "passed": true,
+      "reasons": [
+        "filename hint matched",
+        "has EXIF"
+      ],
+      "width": 1350,
+      "height": 1800,
+      "has_exif": true,
+      "filename_hint": true
+    },
+    {
+      "file": "screenshot_017.png",
+      "passed": true,
+      "reasons": [
+        "filename hint matched"
+      ],
+      "width": 700,
+      "height": 1250,
+      "has_exif": false,
+      "filename_hint": true
+    },
+    {
+      "file": "screenshot_018.png",
+      "passed": true,
+      "reasons": [
+        "filename hint matched"
+      ],
+      "width": 700,
+      "height": 1250,
+      "has_exif": false,
+      "filename_hint": true
+    },
+    {
+      "file": "screenshot_019.png",
+      "passed": true,
+      "reasons": [
+        "filename hint matched"
+      ],
+      "width": 700,
+      "height": 1250,
+      "has_exif": false,
+      "filename_hint": true
+    },
+    {
+      "file": "screenshot_020.png",
+      "passed": true,
+      "reasons": [
+        "filename hint matched"
+      ],
+      "width": 700,
+      "height": 1250,
+      "has_exif": false,
+      "filename_hint": true
+    },
+    {
+      "file": "screenshot_021.png",
+      "passed": true,
+      "reasons": [
+        "filename hint matched"
+      ],
+      "width": 700,
+      "height": 1250,
+      "has_exif": false,
+      "filename_hint": true
+    }
+  ]
+}

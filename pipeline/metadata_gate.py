@@ -72,6 +72,8 @@ def run(dir_path: Path) -> list[MetadataResult]:
 
 
 if __name__ == "__main__":
+    import json
+
     target = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).parent.parent / "tests/needles/docs"
     start = time.perf_counter()
     results = run(target)
@@ -83,3 +85,20 @@ if __name__ == "__main__":
     for r in results:
         status = "PASS" if r.passed else "DROP"
         print(f"  {status}  {r.path.name:<24} {r.width}x{r.height:<6} {'; '.join(r.reasons)}")
+
+    out_dir = Path(__file__).parent.parent / "outputs/metadata_gate"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out = {
+        "target": str(target),
+        "elapsed_ms": elapsed * 1000,
+        "per_image_ms": per_image_ms,
+        "passed": passed,
+        "total": len(results),
+        "results": [
+            {"file": r.path.name, "passed": r.passed, "reasons": r.reasons,
+             "width": r.width, "height": r.height, "has_exif": r.has_exif,
+             "filename_hint": r.filename_hint}
+            for r in results
+        ],
+    }
+    (out_dir / "results.json").write_text(json.dumps(out, indent=2))

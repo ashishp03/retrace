@@ -1,0 +1,392 @@
+{
+  "target": "../tests/sample_batch/docs",
+  "elapsed_s": 64.90154441700724,
+  "extracted": 18,
+  "total_after_metadata_gate": 25,
+  "s_per_image": 2.5960617766802896,
+  "records": [
+    {
+      "file": "card_007.png",
+      "outcome": "extracted",
+      "elapsed_s": 8.468374749994837,
+      "fields": {
+        "doc_type": "card",
+        "title": "MEMBER CARD",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "Name": "Jasmine Rubio",
+          "Member ID": "M-89770-A",
+          "Since": "2021"
+        },
+        "summary": "This is a membership card containing the user's name, membership ID, and join date."
+      }
+    },
+    {
+      "file": "card_008.png",
+      "outcome": "extracted",
+      "elapsed_s": 3.266622625000309,
+      "fields": {
+        "doc_type": "card",
+        "title": "Health Insurance Policy",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [
+          "M6877-C"
+        ],
+        "key_values": {
+          "Insured": "Julie Baird",
+          "Policy #": "M6877-C",
+          "Expires": "2031-11"
+        },
+        "summary": "This document appears to be a health insurance card or policy details, showing the insured name, policy number, and expiration date."
+      }
+    },
+    {
+      "file": "card_009.png",
+      "outcome": "extracted",
+      "elapsed_s": 2.7220247500081314,
+      "fields": {
+        "doc_type": "card",
+        "title": "Employee ID",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "Name": "Gabrielle Collins",
+          "Dept": "Outdoor activities/e",
+          "ID": "E-1985"
+        },
+        "summary": "This is a standard employee identification card."
+      }
+    },
+    {
+      "file": "card_010.png",
+      "outcome": "extracted",
+      "elapsed_s": 3.1269300830026623,
+      "fields": {
+        "doc_type": "card",
+        "title": "Driver License",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [
+          "DL-0772837"
+        ],
+        "key_values": {
+          "Name": "David Garcia",
+          "DOB": "1977-10-03",
+          "License #": "DL-0772837"
+        },
+        "summary": "A copy of a driver's license for David Garcia."
+      }
+    },
+    {
+      "file": "card_011.png",
+      "outcome": "extracted",
+      "elapsed_s": 2.9836226250045,
+      "fields": {
+        "doc_type": "screenshot_text",
+        "title": null,
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [
+          "ACCT-66304949"
+        ],
+        "key_values": {
+          "Name": "Jennifer Reyes",
+          "Balance": "$1,555.52"
+        },
+        "summary": "This is a screen capture showing a simple account summary with a name, account number, and balance."
+      }
+    },
+    {
+      "file": "form_012.png",
+      "outcome": "extracted",
+      "elapsed_s": 3.298628500007908,
+      "fields": {
+        "doc_type": "form",
+        "title": "North Veronicaborough Water Utility Notice",
+        "date": "2026-02-02",
+        "amount": null,
+        "currency": null,
+        "entity": "North Veronicaborough Water Utility",
+        "identifiers": [],
+        "key_values": {
+          "account": "7407840",
+          "effective_date": "2026-02-02"
+        },
+        "summary": "This utility notice confirms that the resident's service address has been updated in the billing system."
+      }
+    },
+    {
+      "file": "form_013.png",
+      "outcome": "extracted",
+      "elapsed_s": 3.285096624997095,
+      "fields": {
+        "doc_type": "form",
+        "title": "Renewal Notice",
+        "date": "2026-06-20",
+        "amount": 49.0,
+        "currency": "USD",
+        "entity": "State DMV",
+        "identifiers": [],
+        "key_values": {
+          "plate": "N546114",
+          "renewal fee": 49.0,
+          "due date": "2026-06-20"
+        },
+        "summary": "This is a renewal notice from the State DMV for a vehicle registration."
+      }
+    },
+    {
+      "file": "form_014.png",
+      "outcome": "extracted",
+      "elapsed_s": 3.6115158750035334,
+      "fields": {
+        "doc_type": "form",
+        "title": "Dean Wood and Martinez Lease Notice",
+        "date": "2025-12-08",
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "Subject": "Dean Wood and Martinez",
+          "Notice Details": "This letter serves as notice that your lease will renew automatically on 2025-12-08 unless written notice is given 60 days prior."
+        },
+        "summary": "This document is a lease notice informing the resident about an automatic lease renewal date and the required notice period for non-renewal."
+      }
+    },
+    {
+      "file": "form_015.png",
+      "outcome": "extracted",
+      "elapsed_s": 3.2071241660014493,
+      "fields": {
+        "doc_type": "form",
+        "title": "Patient Visit Summary",
+        "date": "2026-07-12",
+        "amount": null,
+        "currency": null,
+        "entity": "Delacruz and Sons Medical Group",
+        "identifiers": [],
+        "key_values": {
+          "Patient": "Emily Perez",
+          "Visit date": "2026-07-12",
+          "Provider": "Dr. Bishop"
+        },
+        "summary": "This document is a patient visit summary from Delacruz and Sons Medical Group."
+      }
+    },
+    {
+      "file": "form_016.png",
+      "outcome": "extracted",
+      "elapsed_s": 3.275335541999084,
+      "fields": {
+        "doc_type": "form",
+        "title": "Shepard, Gonzalez and Clements \u2014 Invoice",
+        "date": "2025-11-08",
+        "amount": 559.58,
+        "currency": "USD",
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "Invoice #": "925043",
+          "Billed To": "Mr. Anthony Rodriguez"
+        },
+        "summary": "This is an invoice from Shepard, Gonzalez and Clements dated November 8, 2025."
+      }
+    },
+    {
+      "file": "junk_blurry_photo_027.png",
+      "outcome": "dropped_at_ocr"
+    },
+    {
+      "file": "junk_landscape_022.png",
+      "outcome": "dropped_at_ocr"
+    },
+    {
+      "file": "junk_meme_024.png",
+      "outcome": "dropped_at_ocr"
+    },
+    {
+      "file": "junk_selfie_023.png",
+      "outcome": "dropped_at_ocr"
+    },
+    {
+      "file": "receipt_001.png",
+      "outcome": "dropped_at_ocr"
+    },
+    {
+      "file": "receipt_002.png",
+      "outcome": "extracted",
+      "elapsed_s": 3.2208867080044,
+      "fields": {
+        "doc_type": "receipt",
+        "title": "Parking Receipt",
+        "date": "2025-08-03",
+        "amount": 26.56,
+        "currency": "USD",
+        "entity": "NORTH AMANDA PARKING AUTHORITY",
+        "identifiers": [],
+        "key_values": {
+          "Parking fee": "24.59",
+          "Tax": "1.97",
+          "TOTAL": "26.56"
+        },
+        "summary": "A receipt from the North Amanda Parking Authority for a parking fee and tax."
+      }
+    },
+    {
+      "file": "receipt_003.png",
+      "outcome": "extracted",
+      "elapsed_s": 3.0334826670004986,
+      "fields": {
+        "doc_type": "receipt",
+        "title": "Williams, Hendrix and OConnell Receipt",
+        "date": "2026-01-02",
+        "amount": 3.47,
+        "currency": "USD",
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "Cold Brew": "3.21",
+          "Tax": "0.26"
+        },
+        "summary": "This is a receipt from Williams, Hendrix and OConnell for a cold brew and tax."
+      }
+    },
+    {
+      "file": "receipt_004.png",
+      "outcome": "extracted",
+      "elapsed_s": 3.577368625003146,
+      "fields": {
+        "doc_type": "receipt",
+        "title": "Nguyenshire Parking Authority Receipt",
+        "date": "2025-11-23",
+        "amount": 7.96,
+        "currency": "USD",
+        "entity": "NGUYENSHIRE PARKING AUTHORITY",
+        "identifiers": [],
+        "key_values": {
+          "Parking fee": "USD 7.37",
+          "Tax": "USD 0.59",
+          "TOTAL": "USD 7.96"
+        },
+        "summary": "This is a parking receipt from Nguyenshire Parking Authority dated November 23, 2025, detailing parking fees and tax."
+      }
+    },
+    {
+      "file": "receipt_005.png",
+      "outcome": "dropped_at_ocr"
+    },
+    {
+      "file": "receipt_006.png",
+      "outcome": "dropped_at_ocr"
+    },
+    {
+      "file": "screenshot_017.png",
+      "outcome": "extracted",
+      "elapsed_s": 2.4627563749963883,
+      "fields": {
+        "doc_type": "screenshot_text",
+        "title": null,
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "Messages": null,
+          "Draw relate either statement others.": null
+        },
+        "summary": "A text-based screenshot showing a section titled 'Messages'."
+      }
+    },
+    {
+      "file": "screenshot_018.png",
+      "outcome": "extracted",
+      "elapsed_s": 2.801462374991388,
+      "fields": {
+        "doc_type": "screenshot_text",
+        "title": "Messages",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "message 1": "Mind upon with call look.",
+          "message 2": "Pass exactly true daughter admit especially knowledge art."
+        },
+        "summary": "This document appears to be a text-based message screen or list containing two separate messages."
+      }
+    },
+    {
+      "file": "screenshot_019.png",
+      "outcome": "extracted",
+      "elapsed_s": 2.7689745419920655,
+      "fields": {
+        "doc_type": "screenshot_text",
+        "title": "Mail \u2014 Example most win",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "From:": "coxpatricia@example.com"
+        },
+        "summary": "This appears to be a screenshot of an email or message with the subject 'Mail \u2014 Example most win' and content containing sample phrases."
+      }
+    },
+    {
+      "file": "screenshot_020.png",
+      "outcome": "extracted",
+      "elapsed_s": 2.731713959001354,
+      "fields": {
+        "doc_type": "screenshot_text",
+        "title": "Calendar Entry",
+        "date": null,
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "event": "Five yourself",
+          "date_time": "14:10:26",
+          "notes": "Jillianberg"
+        },
+        "summary": "This is a screenshot of a digital calendar entry."
+      }
+    },
+    {
+      "file": "screenshot_021.png",
+      "outcome": "extracted",
+      "elapsed_s": 2.808216249992256,
+      "fields": {
+        "doc_type": "screenshot_text",
+        "title": "Bank Alert",
+        "date": "2026-08-17",
+        "amount": null,
+        "currency": null,
+        "entity": null,
+        "identifiers": [],
+        "key_values": {
+          "charge": "Charge of $28.46 at Bell-Jennings"
+        },
+        "summary": "This document is a bank alert notification for a charge at Bell-Jennings."
+      }
+    }
+  ]
+}

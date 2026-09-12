@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retrace</title>
+<style>
+  :root {
+    --paper: #f3efe6;
+    --paper-raised: #ffffff;
+    --ink: #1b1a17;
+    --ink-dim: #75705f;
+    --ink-faint: #a19c8c;
+    --rule: rgba(27,26,23,0.14);
+    --rule-strong: rgba(27,26,23,0.5);
+    --red: #b3222f;
+    --red-soft: rgba(179,34,47,0.08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #17150f;
+      --paper-raised: #1f1c15;
+      --ink: #ece7db;
+      --ink-dim: #a49d8a;
+      --ink-faint: #6f6a5c;
+      --rule: rgba(236,231,219,0.14);
+      --rule-strong: rgba(236,231,219,0.4);
+      --red: #d9525f;
+      --red-soft: rgba(217,82,95,0.1);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; min-height: 100%;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
+  ::selection { background: var(--red); color: var(--paper); }
+
+  .page { max-width: 760px; margin: 0 auto; padding: 0 28px 100px; }
+
+  .masthead {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 40px 0 22px; border-bottom: 1px solid var(--rule-strong);
+  }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .mark { width: 50px; height: 50px; color: var(--ink); flex-shrink: 0; }
+  .mark .accent { stroke: var(--red); }
+  .mark .origin { stroke: var(--red); }
+  .wordmark {
+    font-family: ui-serif, Georgia, "Hiragino Mincho ProN", serif;
+    font-size: 30px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink);
+  }
+
+  .sync-link {
+    display: flex; align-items: center; gap: 8px; background: none; border: none;
+    cursor: pointer; font-size: 12px; letter-spacing: 0.06em; color: var(--ink-dim);
+    padding: 6px 0; font-family: inherit; text-transform: uppercase;
+  }
+  .sync-link:hover { color: var(--ink); }
+  .sync-link:disabled { opacity: 0.5; cursor: default; }
+  .sync-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-faint); flex-shrink: 0; }
+  .sync-dot.live { background: var(--red); animation: blink 1s steps(2) infinite; }
+
+  .eyebrow {
+    margin: 26px 0 20px; font-size: 12.5px; color: var(--ink-faint); line-height: 1.7;
+    max-width: 480px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+    font-family: ui-serif, Georgia, "Hiragino Mincho ProN", serif;
+  }
+
+  .ask-row { display: flex; border: 1.5px solid var(--rule-strong); background: var(--paper-raised); }
+  .ask-row input {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: var(--ink); font-size: 16px; padding: 18px 18px; font-family: inherit;
+  }
+  .ask-row input::placeholder { color: var(--ink-faint); }
+  .ask-btn {
+    background: var(--ink); border: none; color: var(--paper); font-weight: 600;
+    padding: 0 26px; cursor: pointer; font-size: 13.5px; letter-spacing: 0.04em;
+    text-transform: uppercase; transition: background .15s;
+  }
+  .ask-btn:hover { background: var(--red); }
+  .ask-btn:disabled { opacity: 0.5; cursor: default; }
+
+  #syncStatus { font-size: 12px; color: var(--ink-faint); margin-top: 10px; min-height: 16px; }
+
+  .section-label {
+    font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint);
+    font-weight: 600; margin: 0 0 12px;
+  }
+
+  .answer-block {
+    margin-top: 20px; margin-bottom: 38px; padding-left: 20px; border-left: 2px solid var(--red);
+    animation: rise .3s ease both;
+  }
+  .answer-text {
+    font-size: 19px; line-height: 1.6; color: var(--ink);
+    font-family: ui-serif, Georgia, "Hiragino Mincho ProN", serif;
+  }
+
+  .source {
+    margin-top: 34px; border: 1px solid var(--rule); background: var(--paper-raised);
+    padding: 20px 22px; animation: rise .35s ease both;
+  }
+  .source-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .source-type {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-dim);
+    font-weight: 600;
+  }
+  .source-title { font-size: 17px; font-weight: 600; margin: 2px 0 9px; color: var(--ink); }
+  .source-meta { font-size: 13.5px; color: var(--ink-dim); line-height: 1.7; }
+  .source-meta b { color: var(--ink); font-weight: 600; }
+  .source-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--rule); }
+  .source-origin { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
+
+  .seal { display: flex; align-items: center; gap: 7px; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+  .seal-ring {
+    width: 13px; height: 13px; border-radius: 50%; border: 1.5px solid currentColor;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .seal.verified { color: var(--red); }
+  .seal.verified .seal-ring::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+  .seal.review { color: var(--ink-dim); }
+  .seal.review .seal-ring { border-style: dashed; }
+
+  .empty, .loading { color: var(--ink-dim); margin-top: 40px; font-size: 14px; }
+  .loading { display: flex; align-items: center; gap: 10px; }
+  .loading .bar { width: 90px; height: 1.5px; background: var(--rule); position: relative; overflow: hidden; }
+  .loading .bar::after {
+    content: ''; position: absolute; left: -40%; top: 0; width: 40%; height: 100%;
+    background: var(--red); animation: sweep 1s ease-in-out infinite;
+  }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes blink { 50% { opacity: 0.25; } }
+  @keyframes sweep { 0% { left: -40%; } 100% { left: 100%; } }
+
+  footer {
+    margin-top: 70px; padding-top: 18px; border-top: 1px solid var(--rule);
+    color: var(--ink-faint); font-size: 11.5px; letter-spacing: 0.02em;
+  }
+  footer .powered {
+    margin-top: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-dim); font-weight: 600;
+  }
+  footer .powered span { color: var(--ink-faint); font-weight: 400; text-transform: none; letter-spacing: 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand">
+      <!-- previous mark, kept in case the new one doesn't land:
+      <svg class="mark" viewBox="0 0 40 40" fill="none">
+        <rect x="4" y="4" width="22" height="22" stroke="currentColor" stroke-width="2"/>
+        <rect class="accent" x="14" y="14" width="22" height="22" stroke-width="2"/>
+      </svg>
+      -->
+      <!-- dot-trail mark, kept in case the chevron version doesn't land:
+      <svg class="mark" viewBox="0 0 40 40" fill="none">
+        <circle cx="32" cy="8" r="2.2" fill="currentColor" opacity="0.22"/>
+        <circle cx="24" cy="15" r="2.8" fill="currentColor" opacity="0.45"/>
+        <circle cx="16" cy="23" r="3.4" fill="currentColor" opacity="0.75"/>
+        <circle class="origin" cx="8" cy="32" r="4.4"/>
+      </svg>
+      -->
+      <svg class="mark" viewBox="0 0 40 40" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path class="origin" d="M 12,13.5 L 5,20 L 12,26.5" stroke-width="2.7"/>
+        <path d="M 21,14.8 L 15,20 L 21,25.2" stroke="currentColor" stroke-width="2.3" opacity="0.7"/>
+        <path d="M 28.8,15.8 L 24,20 L 28.8,24.2" stroke="currentColor" stroke-width="2" opacity="0.45"/>
+        <path d="M 35.4,16.9 L 31.4,20 L 35.4,23.1" stroke="currentColor" stroke-width="1.7" opacity="0.22"/>
+      </svg>
+      <span class="wordmark">Retrace</span>
+    </div>
+    <button class="sync-link" id="syncBtn" onclick="syncGmail()">
+      <span class="sync-dot" id="syncDot"></span>
+      <span id="syncLabel">Sync Gmail</span>
+    </button>
+  </div>
+
+  <p class="eyebrow">Digs through your camera roll and mail so you don't have to!</p>
+
+  <div class="ask-row">
+    <input id="q" type="text" placeholder="Ask a question about your documents" autofocus />
+    <button class="ask-btn" id="askBtn" onclick="ask()">Ask</button>
+  </div>
+  <div id="syncStatus"></div>
+
+  <div id="results"></div>
+
+  <footer>
+    <div class="powered">Powered by Gemma <span>&middot;</span> Lambda <span>&middot;</span> Respan <span>&middot;</span> Nango</div>
+  </footer>
+</div>
+
+<script>
+const resultsEl = document.getElementById('results');
+const input = document.getElementById('q');
+const askBtn = document.getElementById('askBtn');
+
+input.addEventListener('keydown', (e) => { if (e.key === 'Enter') ask(); });
+
+function escapeHtml(s) {
+  return (s ?? '').toString().replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function fmtMeta(doc) {
+  const parts = [];
+  if (doc.date) parts.push(`<b>${escapeHtml(doc.date)}</b>`);
+  if (doc.amount != null) parts.push(`<b>${escapeHtml(doc.currency || '')} ${doc.amount}</b>`);
+  if (doc.entity) parts.push(escapeHtml(doc.entity));
+  if (doc.identifiers && doc.identifiers.length) parts.push(escapeHtml(doc.identifiers.join(', ')));
+  return parts.join(' &nbsp;/&nbsp; ');
+}
+
+function renderTopSource(sources) {
+  if (!sources || !sources.length) return '';
+  const doc = sources[0];
+  const flagged = doc.agreement === 'flagged';
+  return `
+    <div class="section-label">Source</div>
+    <div class="source">
+      <div class="source-top">
+        <span class="source-type">${escapeHtml((doc.doc_type || '').replace('_',' '))}</span>
+      </div>
+      <div class="source-title">${escapeHtml(doc.title || '(untitled)')}</div>
+      <div class="source-meta">${fmtMeta(doc)}</div>
+      <div class="source-foot">
+        <span class="source-origin">${doc.source === 'gmail' ? 'Gmail' : 'Photos'}</span>
+        <span class="seal ${flagged ? 'review' : 'verified'}">
+          <span class="seal-ring"></span>${flagged ? 'Needs review' : 'Verified'}
+        </span>
+      </div>
+    </div>
+  `;
+}
+
+async function syncGmail() {
+  const btn = document.getElementById('syncBtn');
+  const dot = document.getElementById('syncDot');
+  const label = document.getElementById('syncLabel');
+  const status = document.getElementById('syncStatus');
+  btn.disabled = true;
+  dot.classList.add('live');
+  label.textContent = 'Syncing…';
+  status.textContent = '';
+  try {
+    const res = await fetch('/api/sync/gmail', { method: 'POST' });
+    const data = await res.json();
+    if (data.indexed > 0) {
+      status.textContent = `Indexed ${data.indexed} new document${data.indexed === 1 ? '' : 's'} from Gmail (${data.elapsed_s.toFixed(1)}s)`;
+    } else if (data.new_messages_checked > 0) {
+      status.textContent = `Checked ${data.new_messages_checked} new email(s) — nothing indexable`;
+    } else {
+      status.textContent = 'No new email since last sync';
+    }
+  } catch (e) {
+    status.textContent = "Couldn't reach the sync endpoint";
+  } finally {
+    btn.disabled = false;
+    dot.classList.remove('live');
+    label.textContent = 'Sync Gmail';
+  }
+}
+
+async function ask() {
+  const question = input.value.trim();
+  if (!question) return;
+  askBtn.disabled = true;
+  resultsEl.innerHTML = `<div class="loading">Searching<div class="bar"></div></div>`;
+
+  try {
+    const res = await fetch('/api/ask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question }),
+    });
+    const data = await res.json();
+    resultsEl.innerHTML = `
+      <div class="answer-block">
+        <div class="section-label">Answer</div>
+        <div class="answer-text">${escapeHtml(data.answer)}</div>
+      </div>
+      ${renderTopSource(data.sources || [])}
+    `;
+  } catch (e) {
+    resultsEl.innerHTML = `<div class="empty">Couldn't reach the API — is it running?</div>`;
+  } finally {
+    askBtn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>

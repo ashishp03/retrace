@@ -1,3 +1,11 @@
+> **Update (same day, ~1hr-to-go checkpoint):** Respan key is now live (`.env` filled in) and
+> `gemma4:e4b` is confirmed pulled in local Ollama — the "no keys yet" framing below is stale.
+> Stages 4, 5, and 6 are now built and validated end-to-end against all 12 needle docs expected to
+> extract (`pipeline/extract.py`, `pipeline/crosscheck.py`, `pipeline/store.py`). See the new
+> section at the bottom of this file for what changed and what's still open (notably: no Lambda-
+> hosted Gemma checkpoint exists, so stage 5 currently verifies against `anthropic/claude-haiku-4-5`
+> via Respan instead — a known rubric gap, not an oversight).
+
 # Retrace — Handover / Checkpoint
 
 **Read this first if you're picking up this work on a different machine.** This is the current
@@ -131,3 +139,55 @@ uncommitted, and exactly what to do next. `CLAUDE.md` is the stable scope/archit
 | 9 — API + Web UI | Not started. |
 | 10 — Needle test validation | Stages 2-3 validated individually. Full skill run needs stages 4-6. |
 | 11 — Demo prep | Not started. |
+
+---
+
+## Update: keys are live, stages 4-6 built (1hr-to-go checkpoint)
+
+**What changed vs. everything above:** the "no Nango/Respan/Lambda keys yet" framing is now
+stale for Respan. A real Respan API key was provided and added to `.env`
+(`RESPAN_API_KEY`, `RESPAN_BASE_URL=https://api.respan.ai/api/`). Nango/Lambda keys are still
+unset.
+
+### Stage 4 — Extract (`pipeline/extract.py`) — built, validated
+- Calls local Ollama (`gemma4:e4b`, confirmed pulled) directly via `POST /api/generate`, image as
+  base64, `format` set to a JSON schema for constrained decoding (Ollama's structured-output
+  support) — one call, retries once on parse failure, drops the record on a second failure.
+- Validated against all 12 needles expected to reach `extracted`: 12/12, exact field matches
+  (dates, amounts, entities) against `manifest.json`. **3.03s/image** average (includes the OCR
+  hint from stage 3). This is the real Phase-1 stage-4 timing number — feed it into the 800-vs-300
+  cap decision (still not formally recorded — do that next if time allows).
+
+### Stage 5 — Cross-check (`pipeline/crosscheck.py`) — built, validated, **known rubric gap**
+- Routes every stage-4 result through **Respan** (`client.chat.completions.create`), tagged
+  `extra_body={"metadata": {"stage": "crosscheck", "doc_type": ...}}` — confirmed Respan accepts
+  this tag shape without erroring.
+- **Checked Respan's live `/models` list — zero `gemma` entries, and no Lambda endpoint exists.**
+  CLAUDE.md requires stage 5 to be a Gemma checkpoint served from Lambda; that's not available
+  right now. Rather than block, stage 5 currently verifies against `anthropic/claude-haiku-4-5`
+  (vision-capable, fast, ~2s/image) through Respan. This satisfies "Respan use" and "multi-agent
+  coordination" but **not** the Lambda / Gemma-on-Lambda bonus rubric lines. Flag this explicitly
+  in the demo Q&A rather than let a judge discover it — swap `RESPAN_CROSSCHECK_MODEL` in `.env`
+  the moment a Lambda-hosted Gemma endpoint exists; no code change needed.
+- Validated against the 12 needles: 9 `high`, 3 `flagged` (all 3 `card` needles — the two models
+  genuinely disagree on the `entity` field for card/ID docs, which don't have an obvious
+  merchant/issuer the way receipts do, and one disagreed on `doc_type` too, health-insurance-card
+  vs. form). This is a legitimately good demo moment — real, non-contrived disagreement, not a
+  forced example.
+
+### Stage 6 — Store & search (`pipeline/store.py`) — built, validated
+- Inserts stage-4 fields + `ocr_text` + stage-5 `agreement` into the existing `pipeline/schema.sql`
+  tables; FTS5 query helper included.
+- Ran the full chain (metadata gate → OCR gate → extract → crosscheck → store) over all 15
+  needles end to end: 12 stored, 3 correctly dropped (2 at metadata, 1 at OCR — matches
+  `manifest.json` exactly). Three sample FTS queries (`coffee`, `DMV`, `policy`) all returned the
+  right rows.
+
+### Still open, in priority order for the remaining time
+1. No API/web UI yet (`api/`, `web/` — Phase 9) — the search above is CLI-only right now.
+2. No Stage 1 ingest code (local folder walker + Nango) — everything above was run directly
+   against `tests/needles/docs`.
+3. Formal 800-vs-300 cap decision still not written down (have the real numbers now: ~2.5ms/image
+   stages 2-3, ~3s/image stage 4 on the ~8% of images that survive the gates in the needle set).
+4. Lambda/Gemma gap above — decide whether to attempt provisioning in the time left or accept the
+   gap and address it verbally in Q&A.

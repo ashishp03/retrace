@@ -106,3 +106,21 @@ if __name__ == "__main__":
         status = "PASS" if r.passed else "DROP"
         preview = r.ocr_text[:50].replace("\n", " ")
         print(f"  {status}  {r.path.name:<24} words={r.confident_word_count:<3} '{preview}'")
+
+    import json
+
+    out_dir = Path(__file__).parent.parent / "outputs/ocr_gate"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out = {
+        "target": str(target),
+        "elapsed_ms": elapsed * 1000,
+        "per_image_ms": per_image_ms,
+        "passed": passed,
+        "total": len(paths),
+        "results": [
+            {"file": r.path.name, "passed": r.passed,
+             "confident_word_count": r.confident_word_count, "ocr_text": r.ocr_text}
+            for r in results
+        ],
+    }
+    (out_dir / "results.json").write_text(json.dumps(out, indent=2))

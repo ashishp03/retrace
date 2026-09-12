@@ -1,0 +1,171 @@
+{
+  "target": "../tests/sample_batch/docs",
+  "elapsed_ms": 3700.691582998843,
+  "per_image_ms": 137.06265122217937,
+  "passed": 18,
+  "total": 27,
+  "results": [
+    {
+      "file": "card_007.png",
+      "passed": true,
+      "confident_word_count": 10,
+      "ocr_text": "MEMBER CARD Name: Jasmine Rubio Member ID: M-89770-A Since: 2021"
+    },
+    {
+      "file": "card_008.png",
+      "passed": true,
+      "confident_word_count": 10,
+      "ocr_text": "HEALTH INSURANCE Insured: Julie Baird Policy #: M6877-C Expires: 2031-11"
+    },
+    {
+      "file": "card_009.png",
+      "passed": true,
+      "confident_word_count": 10,
+      "ocr_text": "EMPLOYEE |p Name: Gabrielle Collins Dept: Outdoor activities/e ID: E-1985"
+    },
+    {
+      "file": "card_010.png",
+      "passed": true,
+      "confident_word_count": 10,
+      "ocr_text": "DRIVER LICENSE Name: David Garcia DOB: 1977-10-03 License #: DL-0772837"
+    },
+    {
+      "file": "card_011.png",
+      "passed": true,
+      "confident_word_count": 10,
+      "ocr_text": "ACCOUNT SUMMARY Name: Jennifer Reyes Account #: ACCT-66304949 Balance: $1,555.52"
+    },
+    {
+      "file": "form_012.png",
+      "passed": true,
+      "confident_word_count": 27,
+      "ocr_text": "North Veronicaborough Water Utility \u2014 Notice Date: 2026-02-02 Dear Resident, This notice confirms your service address has been updated in our billing system. Account: 7407840 Effective: 2026-02-02"
+    },
+    {
+      "file": "form_013.png",
+      "passed": true,
+      "confident_word_count": 14,
+      "ocr_text": "Your vehicle registration is due for renewal. Plate: N546114 Renewal fee: $49.00 Due date: 2026-06-20"
+    },
+    {
+      "file": "form_014.png",
+      "passed": true,
+      "confident_word_count": 30,
+      "ocr_text": "Wood, Dean and Martinez \u2014 Lease Notice Date: 2025-12-08 This letter serves as notice that your lease will renew automatically on 2025-12-08 unless written notice is given 60 days prior."
+    },
+    {
+      "file": "form_015.png",
+      "passed": true,
+      "confident_word_count": 19,
+      "ocr_text": "Delacruz and Sons Medical Group Date: 2026-07-12 Patient visit summary. Patient: Emily Perez Visit date: 2026-07-12 Provider: Dr. Bishop"
+    },
+    {
+      "file": "form_016.png",
+      "passed": true,
+      "confident_word_count": 25,
+      "ocr_text": "d, Gonzalez and Clements \u2014 Invoice 25-11-08 Shepat Date: 20 invoice #: 925043 Date: 2025-1 1-08 Amount Bill to: Mi due: $559. 58 r. Anthony Rodriguez"
+    },
+    {
+      "file": "junk_blurry_photo_027.png",
+      "passed": false,
+      "confident_word_count": 0,
+      "ocr_text": ""
+    },
+    {
+      "file": "junk_landscape_022.png",
+      "passed": false,
+      "confident_word_count": 0,
+      "ocr_text": ""
+    },
+    {
+      "file": "junk_meme_024.png",
+      "passed": false,
+      "confident_word_count": 2,
+      "ocr_text": "SAME ENERGY"
+    },
+    {
+      "file": "junk_selfie_023.png",
+      "passed": false,
+      "confident_word_count": 0,
+      "ocr_text": ""
+    },
+    {
+      "file": "junk_tiny_thumbnail_025.png",
+      "passed": false,
+      "confident_word_count": 0,
+      "ocr_text": ""
+    },
+    {
+      "file": "junk_wide_panorama_026.png",
+      "passed": false,
+      "confident_word_count": 0,
+      "ocr_text": ""
+    },
+    {
+      "file": "receipt_001.png",
+      "passed": false,
+      "confident_word_count": 5,
+      "ocr_text": "GLENN VINCENT Date: 2026~04_05 USD 126.36"
+    },
+    {
+      "file": "receipt_002.png",
+      "passed": true,
+      "confident_word_count": 6,
+      "ocr_text": "NORTH AMANDA PARKING AUTHORITY Date: 2025-08-03"
+    },
+    {
+      "file": "receipt_003.png",
+      "passed": true,
+      "confident_word_count": 6,
+      "ocr_text": "WILLIAMS, HENDRIX AND OCONNELL Date: 2026-01-02"
+    },
+    {
+      "file": "receipt_004.png",
+      "passed": true,
+      "confident_word_count": 7,
+      "ocr_text": "NGUYENSHIRE PARKING AUTHORITY Date: 2025-11-23 Parking fee"
+    },
+    {
+      "file": "receipt_005.png",
+      "passed": false,
+      "confident_word_count": 5,
+      "ocr_text": "HALL, PHILLIPS anp Date; 2024-11-19"
+    },
+    {
+      "file": "receipt_006.png",
+      "passed": false,
+      "confident_word_count": 3,
+      "ocr_text": "CHANG-PALMER Date: 2024-10-02"
+    },
+    {
+      "file": "screenshot_017.png",
+      "passed": true,
+      "confident_word_count": 6,
+      "ocr_text": "Messages Draw relate either statement others."
+    },
+    {
+      "file": "screenshot_018.png",
+      "passed": true,
+      "confident_word_count": 14,
+      "ocr_text": "Messages Mind upon with call look. Pass exactly true daughter admit especially knowledge art."
+    },
+    {
+      "file": "screenshot_019.png",
+      "passed": true,
+      "confident_word_count": 17,
+      "ocr_text": "Mail \u2014 Example most win From: coxpatricia@example.com Once cell along adult travel red while again player lot."
+    },
+    {
+      "file": "screenshot_020.png",
+      "passed": true,
+      "confident_word_count": 6,
+      "ocr_text": "Calendar Five yourself 14:10:26 \u2014 Jillianberg"
+    },
+    {
+      "file": "screenshot_021.png",
+      "passed": true,
+      "confident_word_count": 8,
+      "ocr_text": "Bank Alert Charge of $28.46 at Bell-Jennings 2026-08-17"
+    }
+  ]
+}
