@@ -1,0 +1,122 @@
+[
+  {
+    "file": "receipt_01.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "receipt",
+      "entity": "Blue Bottle Coffee",
+      "date": "2026-08-14",
+      "amount": 12.23
+    }
+  },
+  {
+    "file": "receipt_02.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "receipt",
+      "entity": "Home Depot #4471",
+      "date": "2026-07-02",
+      "amount": 23.03
+    }
+  },
+  {
+    "file": "receipt_03.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "receipt",
+      "entity": "Trader Joe's",
+      "date": "2026-08-30",
+      "amount": 9.49
+    }
+  },
+  {
+    "file": "card_01.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "card",
+      "identifiers": [
+        "M-88213-X"
+      ]
+    }
+  },
+  {
+    "file": "card_02.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "card",
+      "identifiers": [
+        "A4471-B"
+      ]
+    }
+  },
+  {
+    "file": "card_03.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "card",
+      "identifiers": [
+        "E-00931"
+      ]
+    }
+  },
+  {
+    "file": "form_01.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "form",
+      "date": "2026-06-01"
+    }
+  },
+  {
+    "file": "form_02.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "form",
+      "date": "2026-05-12"
+    }
+  },
+  {
+    "file": "form_03.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "form",
+      "date": "2026-04-20"
+    }
+  },
+  {
+    "file": "screenshot_01.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "screenshot_text"
+    }
+  },
+  {
+    "file": "screenshot_02.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "screenshot_text"
+    }
+  },
+  {
+    "file": "screenshot_03.png",
+    "expected_outcome": "extracted",
+    "expected_fields": {
+      "doc_type": "screenshot_text"
+    }
+  },
+  {
+    "file": "junk_panorama.png",
+    "expected_outcome": "dropped_at_metadata",
+    "expected_fields": {}
+  },
+  {
+    "file": "junk_tiny.png",
+    "expected_outcome": "dropped_at_metadata",
+    "expected_fields": {}
+  },
+  {
+    "file": "junk_blank_photo.png",
+    "expected_outcome": "dropped_at_ocr",
+    "expected_fields": {}
+  }
+]

@@ -15,3 +15,6 @@ staging/
 *.sqlite
 *.sqlite3
 retrace.db
+
+# Test data and images
+*.png
