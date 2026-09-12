@@ -75,24 +75,35 @@ Step-by-step plan from empty repo to demo, mapped to the six-stage architecture 
 
 ---
 
-## Phase 4 — Stage 2: Metadata gate
+## Phase 4 — Stage 2: Metadata gate — **done** (`pipeline/metadata_gate.py`)
 
-- [ ] Filename heuristics (e.g. `IMG_`, `Screenshot`, `Photo`) as weak signals only
-- [ ] EXIF read (orientation, camera model — presence itself is a signal)
-- [ ] Aspect ratio / dimension filter (drop extreme wide/tall, drop tiny)
-- [ ] Loose by design — log what's demoted, don't hard-drop unless clearly junk
+- [x] Filename heuristics (e.g. `IMG_`, `Screenshot`, `Photo`) as weak signals only
+- [x] EXIF read (orientation, camera model — presence itself is a signal)
+- [x] Aspect ratio / dimension filter (drop extreme wide/tall, drop tiny)
+- [x] Loose by design — log what's demoted, don't hard-drop unless clearly junk
 
-**Exit criteria:** running against the Phase 1 sample set demotes obvious non-documents without touching the fifteen needle docs.
+**Exit criteria — met:** 13/15 needles pass; `junk_panorama` (18.2:1 aspect) and `junk_tiny` (32x32) are the only drops, matching `manifest.json` exactly. 2.48ms/image over the 15 needles.
 
 ---
 
-## Phase 5 — Stage 3: OCR gate
+## Phase 5 — Stage 3: OCR gate — **done** (`pipeline/ocr_gate.py`)
 
-- [ ] `pytesseract` over survivors, count confident words
-- [ ] Threshold at 8 words (tune after seeing real needle-doc behavior)
-- [ ] Persist `ocr_text` regardless of pass/fail — used as stage-4 hint and search fallback
+- [x] `pytesseract` over survivors, count confident words
+- [x] Threshold **lowered to 6** (from the stated default of 8) after real needle-doc behavior:
+  `screenshot_03` is a genuine 7-word short text and was being wrongly dropped at 8
+- [x] Persist `ocr_text` regardless of pass/fail — used as stage-4 hint and search fallback
 
-**Exit criteria:** needle docs all survive the gate; obvious non-text images are dropped.
+**Exit criteria — met:** 12/15 needles pass, matching `manifest.json` exactly (all 4 doc types
+extract; `junk_blank_photo`, `junk_panorama`, `junk_tiny` correctly drop). ~108ms/image —
+within `ARCHITECTURE.md`'s ~100-300ms/image estimate.
+
+**Finding worth knowing:** tesseract's automatic page-layout analysis can silently drop entire
+text blocks on images that are mostly blank margin around a small amount of content (found via
+`screenshot_03` — a full-page OCR call returned only the app-bar text, discarding both message
+bubbles, until the image was cropped to its content bounding box first). Fixed by cropping to
+content bbox + a small background-colored border before every OCR call — cheap since gate
+images are small, and it's the more realistic case anyway (real phone screenshots/photos often
+have large blank margins around the actual document).
 
 ---
 
