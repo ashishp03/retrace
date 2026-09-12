@@ -12,7 +12,7 @@ The five-second version — one screen, wide enough to drop straight into a slid
 %%{init: {"look": "handDrawn", "theme": "base", "themeVariables": {"primaryColor": "#f3efe6", "primaryBorderColor": "#1b1a17", "primaryTextColor": "#1b1a17", "lineColor": "#1b1a17", "secondaryColor": "#f6d9dc", "tertiaryColor": "#ffffff", "fontSize": "20px"}}}%%
 flowchart LR
     SRC["📸 Photos<br/>✉ Gmail"] --> GATES["Cheap gates<br/>filter obvious junk"]
-    GATES -.->|~95% discarded| DROP(("discarded"))
+    GATES -.->|non-documents| DROP(("discarded"))
     GATES --> EXTRACT["Extract<br/>local Gemma"]
     EXTRACT --> XCHECK["Cross-check<br/>Lambda + Respan"]
     XCHECK --> SEARCH["Search & Ask"]
