@@ -126,7 +126,7 @@ These are unanswered. Do not assume defaults on the ones that change file layout
 5. Backend language/framework — Python with FastAPI/Flask (matches `pytesseract`/`pillow-heif`/`sqlite3` naturally), or something else?
 6. Frontend for the single search page — plain HTML/JS/CSS served by the backend, or a lightweight framework? Default is the simplest option given "no mobile app, it's a local web page," unless something specific is wanted.
 7. How should indexing run — CLI/script triggered on demand, or a background worker with a progress endpoint the UI polls (spec calls for a live progress counter during the demo)?
-8. Repo/folder structure — one project with `ingest/`, `pipeline/`, `api/`, `web/` subfolders, or split differently?
+8. ~~Repo/folder structure~~ — **Resolved:** one project, split by pipeline stage: `ingest/` (stage 1), `pipeline/` (stages 2–5), `api/` (stage 6 + serving), `web/` (search page). Each has its own `CLAUDE.md`.
 
 **Data & secrets**
 9. Where do API keys/secrets live — a `.env` file? Already set up, or scaffold it with a `.env.example`?
