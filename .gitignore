@@ -18,3 +18,4 @@ retrace.db
 # Test data and images — including the needle-test fixtures, which are generated,
 # not committed: run `uv run python tests/needles/generate_needles.py` to recreate them.
 *.png
+!docs/*.png
